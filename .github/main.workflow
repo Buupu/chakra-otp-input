@@ -4,7 +4,7 @@ workflow "publish on release" {
 }
 
 action "publish" {
-  uses = "actions/npm@master"
+  uses = "actions/npm@main"
   args = "publish"
   secrets = ["NPM_AUTH_TOKEN"]
 }
