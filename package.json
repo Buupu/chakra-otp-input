@@ -1,5 +1,11 @@
 {
+  "name": "chakra-otp-input",
+  "author": "Buupu",
   "version": "0.1.0",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Buupu/chakra-otp-input"
+  },
   "license": "MIT",
   "main": "dist/index.js",
   "typings": "dist/index.d.ts",
@@ -16,12 +22,6 @@
   "peerDependencies": {
     "@chakra-ui/react": ">=1.6.5",
     "react": ">=16"
-  },
-  "name": "chakra-otp-input",
-  "author": "Buupu",
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/Buupu/chakra-otp-input"
   },
   "module": "dist/chakra-otp-input.esm.js",
   "devDependencies": {
