@@ -31,7 +31,7 @@ export const App = () => {
   return (
     <ChakraProvider theme={theme}>
       <Flex w="full" h="100vh">
-        <VStack w="300px" p={3} borderRight="2px" borderColor="teal.900">
+        <VStack w="300px" p={3} borderRight="2px">
           <FormControl>
             <FormLabel>Number of inputs</FormLabel>
             <HStack maxW="320px">
@@ -45,7 +45,7 @@ export const App = () => {
             </HStack>
           </FormControl>
         </VStack>
-        <Flex flex={1} justify="center" align="center">
+        <Flex flex={1} justify="center" align="center" background="blue.900">
           <OTPInput noInputs={noInputs} />
         </Flex>
       </Flex>
