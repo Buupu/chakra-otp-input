@@ -30,7 +30,7 @@ export const OTPInput = ({ noInputs }: OTPProps) => {
 
   const setCurrentFocusValue = (e: React.ChangeEvent<HTMLInputElement>) => {
     const tempInput = [...input];
-    tempInput[activeInput] = e.target.value;
+    tempInput[activeInput] = e.target.value.slice(-1);
     setInput(tempInput);
   };
 
@@ -70,13 +70,13 @@ export const OTPInput = ({ noInputs }: OTPProps) => {
       inputs.push(
         <Input
           key={`otp-input-${i}`}
-          maxLength={1}
           w={12}
           h={12}
           p={0}
           textAlign="center"
-          boxShadow="sm"
+          boxShadow="md"
           bg="white"
+          fontWeight="bold"
           onInput={moveToNextInput}
           onKeyDown={handleKeyDown}
           value={input[i] || ""}
