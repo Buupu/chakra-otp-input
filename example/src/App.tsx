@@ -1,8 +1,9 @@
+import { ChakraProvider, theme } from "@chakra-ui/react";
 import * as React from "react";
-import { ChakraProvider, Box, theme } from "@chakra-ui/react";
+import { OTPInput } from "../../";
 
 export const App = () => (
   <ChakraProvider theme={theme}>
-    <Box textAlign="center" fontSize="xl"></Box>
+    <OTPInput />
   </ChakraProvider>
 );
