@@ -1,10 +1,18 @@
 import { HStack, Input } from "@chakra-ui/react";
 import React, { useEffect, useRef, useState, KeyboardEvent } from "react";
 
-export const OTPInput = ({ noInputs }: OTPProps) => {
+export const OTPInput = ({ noInputs, onChange }: OTPProps) => {
   const [input, setInput] = useState<string[]>([]);
   const [activeInput, setActiveInput] = useState<number>(0);
   const inputRefs = useRef<HTMLInputElement[]>([]);
+
+  useEffect(() => {
+    let inputString = "";
+
+    input.forEach((c) => (inputString += c));
+
+    onChange(inputString);
+  }, [input]);
 
   useEffect(() => {
     inputRefs.current[activeInput]?.focus();
@@ -77,6 +85,7 @@ export const OTPInput = ({ noInputs }: OTPProps) => {
           boxShadow="md"
           bg="white"
           fontWeight="bold"
+          fontSize="lg"
           onInput={moveToNextInput}
           onKeyDown={handleKeyDown}
           value={input[i] || ""}
@@ -98,4 +107,5 @@ export const OTPInput = ({ noInputs }: OTPProps) => {
 
 interface OTPProps {
   noInputs: number;
+  onChange: (value: string) => void;
 }

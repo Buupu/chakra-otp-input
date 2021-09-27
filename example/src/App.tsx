@@ -28,6 +28,11 @@ export const App = () => {
   const inc = getIncrementButtonProps();
   const dec = getDecrementButtonProps();
   const input = getInputProps();
+
+  const handleOTP = (value: string) => {
+    console.log(value);
+  };
+
   return (
     <ChakraProvider theme={theme}>
       <Flex w="full" h="100vh">
@@ -46,7 +51,7 @@ export const App = () => {
           </FormControl>
         </VStack>
         <Flex flex={1} justify="center" align="center" background="blue.900">
-          <OTPInput noInputs={noInputs} />
+          <OTPInput noInputs={noInputs as number} onChange={handleOTP} />
         </Flex>
       </Flex>
     </ChakraProvider>
