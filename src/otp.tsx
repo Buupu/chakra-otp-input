@@ -6,7 +6,17 @@ export const OTPInput = ({ noInputs }: OTPProps) => {
     const inputs = [];
 
     for (let i = 0; i < noInputs; i++) {
-      inputs.push(<Input maxlength={1} />);
+      inputs.push(
+        <Input
+          maxlength={1}
+          w={12}
+          h={12}
+          p={0}
+          textAlign="center"
+          boxShadow="sm"
+          bg="white"
+        />
+      );
     }
 
     return inputs;
