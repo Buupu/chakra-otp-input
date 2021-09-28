@@ -36,8 +36,8 @@ export const App = () => {
   };
 
   return (
-    <Flex w="full" h="100vh">
-      <VStack w="300px" p={3} borderRight="2px">
+    <Flex w="full" h="100vh" flexDirection={["column", "column", "row"]}>
+      <VStack w={["full", "full", "300px"]} p={3} borderRight="2px">
         <FormControl>
           <FormLabel>Number of inputs</FormLabel>
           <HStack maxW="320px">
