@@ -76,8 +76,6 @@ export const App = () => {
             onChange={handleOTP}
             isNumeric={isNumeric}
             isDisabled={isDisabled}
-            bg="red"
-            color="white"
           />
         </Flex>
       </Flex>
