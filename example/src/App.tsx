@@ -72,7 +72,7 @@ export const App = () => {
         </VStack>
         <Flex flex={1} justify="center" align="center" background="blue.900">
           <OTPInput
-            noInputs={noInputs as number}
+            noInputs={parseInt(noInputs as string)}
             onChange={handleOTP}
             isNumeric={isNumeric}
             isDisabled={isDisabled}

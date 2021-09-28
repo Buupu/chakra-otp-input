@@ -1,5 +1,11 @@
 import { HStack, Input, InputElementProps } from "@chakra-ui/react";
-import React, { useEffect, useRef, useState, KeyboardEvent } from "react";
+import React, {
+  useEffect,
+  useRef,
+  useState,
+  KeyboardEvent,
+  ClipboardEvent,
+} from "react";
 
 export const OTPInput = (props: OTPProps) => {
   const { noInputs, onChange, isDisabled, isNumeric } = props;
@@ -83,6 +89,38 @@ export const OTPInput = (props: OTPProps) => {
     }
   };
 
+  const handleOnPaste = (e: ClipboardEvent<HTMLInputElement>) => {
+    e.preventDefault();
+
+    if (isDisabled) {
+      return;
+    }
+
+    const pastedData = e.clipboardData
+      .getData("text/plain")
+      .slice(0, noInputs - activeInput)
+      .split("");
+
+    if (pastedData.length === 0) {
+      return;
+    }
+
+    const tempInput: string[] = [...input];
+    let tempActiveInput = activeInput;
+
+    for (let i = 0; i < noInputs; i++) {
+      if (pastedData.length > 0 && i >= activeInput) {
+        tempInput[i] = pastedData.shift() || "";
+        tempActiveInput++;
+        if (tempActiveInput === noInputs) {
+          tempActiveInput--;
+        }
+      }
+    }
+    setInput(tempInput);
+    setActiveInput(tempActiveInput);
+  };
+
   const getInputs = () => {
     const inputs = [];
 
@@ -94,12 +132,11 @@ export const OTPInput = (props: OTPProps) => {
           onKeyDown={handleKeyDown}
           value={input[i] || ""}
           isDisabled={isDisabled}
-          onChange={(e) => {
-            setCurrentFocusValue(e);
-          }}
+          onChange={setCurrentFocusValue}
           onFocus={() => {
             setActiveInputOnFocus(i);
           }}
+          onPaste={handleOnPaste}
           ref={(ref: HTMLInputElement) => (inputRefs.current[i] = ref)}
         />,
       );
