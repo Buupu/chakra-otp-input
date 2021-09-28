@@ -82,7 +82,7 @@ cd example
 npm i
 ```
 
-Start the package server, and the example server
+- Start the package server, and the example server
 
 ```sh
 # root directory
