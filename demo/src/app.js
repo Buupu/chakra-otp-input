@@ -78,3 +78,5 @@ export const App = () => {
     </Flex>
   );
 };
+
+export default App;
