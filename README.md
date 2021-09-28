@@ -21,10 +21,9 @@ export default function App() {
   return (
     <Flex pt="48" justify="center" align="center" w="full">
       <FormControl w="60">
-        <OTPInput noInputs={6} onChange={(value) => console.log(value)}>
+        <OTPInput noInputs={6} onChange={(value) => console.log(value)} />
       </FormControl>
     </Flex>
   );
 }
-
 ```
