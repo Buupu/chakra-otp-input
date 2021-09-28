@@ -1,7 +1,8 @@
 import { HStack, Input, InputElementProps } from "@chakra-ui/react";
 import React, { useEffect, useRef, useState, KeyboardEvent } from "react";
 
-export const OTPInput = ({ noInputs, onChange, isDisabled }: OTPProps) => {
+export const OTPInput = (props: OTPProps) => {
+  const { noInputs, onChange, isDisabled, isNumeric } = props;
   const [input, setInput] = useState<string[]>([]);
   const [activeInput, setActiveInput] = useState<number>(0);
   const inputRefs = useRef<HTMLInputElement[]>([]);
@@ -17,6 +18,10 @@ export const OTPInput = ({ noInputs, onChange, isDisabled }: OTPProps) => {
   useEffect(() => {
     inputRefs.current[activeInput]?.focus();
   }, [activeInput]);
+
+  const checkNumeric = (char: string) => {
+    return "0123456789".includes(char);
+  };
 
   const moveToNextInput = () => {
     if (activeInput !== noInputs - 1) {
@@ -37,9 +42,16 @@ export const OTPInput = ({ noInputs, onChange, isDisabled }: OTPProps) => {
   };
 
   const setCurrentFocusValue = (e: React.ChangeEvent<HTMLInputElement>) => {
+    const newInputChar = e.target.value.slice(-1);
+
+    if (isNumeric && !checkNumeric(newInputChar)) {
+      return;
+    }
+
     const tempInput = [...input];
-    tempInput[activeInput] = e.target.value.slice(-1);
+    tempInput[activeInput] = newInputChar;
     setInput(tempInput);
+    moveToNextInput();
   };
 
   const setActiveInputOnFocus = (focusIndex: number) => {
@@ -79,7 +91,6 @@ export const OTPInput = ({ noInputs, onChange, isDisabled }: OTPProps) => {
         <Input
           key={`otp-input-${i}`}
           {...baseStyles}
-          onInput={moveToNextInput}
           onKeyDown={handleKeyDown}
           value={input[i] || ""}
           isDisabled={isDisabled}
@@ -114,4 +125,5 @@ interface OTPProps {
   noInputs: number;
   onChange: (value: string) => void;
   isDisabled?: boolean;
+  isNumeric?: boolean;
 }
