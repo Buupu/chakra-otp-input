@@ -60,3 +60,34 @@ export default function App() {
     <td>Sets the OTP inputs to be disabled.</td>
   </tr>
 </table>
+
+## Running project
+
+- Clone this repository
+
+```sh
+git clone https://github.com/Buupu/chakra-otp-input.git
+```
+
+- Install all dependencies
+
+```sh
+npm i
+```
+
+- Install package example dependencies
+
+```sh
+cd example
+npm i
+```
+
+Start the package server, and the example server
+
+```sh
+# root directory
+npm start
+
+# example directory
+npm run dev
+```
