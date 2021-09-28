@@ -14,6 +14,7 @@ import React from "react";
 import { OTPInput } from "chakra-otp-input";
 
 export const App = () => {
+  const [isPrivate, setIsPrivate] = useBoolean();
   const [isDisabled, setIsDisabled] = useBoolean();
   const [isNumeric, setIsNumeric] = useBoolean();
   const {
@@ -66,6 +67,14 @@ export const App = () => {
             onChange={setIsDisabled.toggle}
           />
         </FormControl>
+        <FormControl>
+          <FormLabel>Private?</FormLabel>
+          <Switch
+            size="lg"
+            checked={isPrivate}
+            onChange={setIsPrivate.toggle}
+          />
+        </FormControl>
       </VStack>
       <Flex flex={1} justify="center" align="center" background="blue.900">
         <OTPInput
@@ -73,6 +82,7 @@ export const App = () => {
           onChange={handleOTP}
           isNumeric={isNumeric}
           isDisabled={isDisabled}
+          isPrivate={isPrivate}
         />
       </Flex>
     </Flex>

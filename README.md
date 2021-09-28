@@ -61,14 +61,21 @@ export default function App() {
     <td>boolean</td>
     <td>false</td>
     <td>false</td>
-    <td>If true sets the OTP inputs to be disabled.</td>
+    <td>If true, sets the OTP inputs to be disabled.</td>
   </tr>
    <tr>
     <td>isNumeric</td>
     <td>boolean</td>
     <td>false</td>
     <td>false</td>
-    <td>If true only numeric values will be allowed.</td>
+    <td>If true, only numeric values will be allowed.</td>
+  </tr>
+  <tr>
+    <td>isPrivate</td>
+    <td>boolean</td>
+    <td>false</td>
+    <td>false</td>
+    <td>If true, input values will be masked.</td>
   </tr>
 </table>
 

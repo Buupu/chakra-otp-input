@@ -8,7 +8,14 @@ import React, {
 } from "react";
 
 export const OTPInput = (props: OTPProps) => {
-  const { noInputs, onChange, isDisabled, isNumeric, ...rest } = props;
+  const {
+    noInputs,
+    onChange,
+    isDisabled,
+    isNumeric,
+    isPrivate,
+    ...rest
+  } = props;
   const [input, setInput] = useState<string[]>([]);
   const [activeInput, setActiveInput] = useState<number>(0);
   const inputRefs = useRef<HTMLInputElement[]>([]);
@@ -138,6 +145,7 @@ export const OTPInput = (props: OTPProps) => {
             setActiveInputOnFocus(i);
           }}
           onPaste={handleOnPaste}
+          type={isPrivate ? "password" : ""}
           ref={(ref: HTMLInputElement) => (inputRefs.current[i] = ref)}
         />,
       );
@@ -163,5 +171,6 @@ interface OTPProps extends Omit<InputElementProps, "onChange"> {
   noInputs: number;
   isDisabled?: boolean;
   isNumeric?: boolean;
+  isPrivate?: boolean;
   onChange: (value: string) => void;
 }
