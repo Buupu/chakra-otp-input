@@ -51,7 +51,11 @@ export const App = () => {
           </FormControl>
         </VStack>
         <Flex flex={1} justify="center" align="center" background="blue.900">
-          <OTPInput noInputs={noInputs as number} onChange={handleOTP} />
+          <OTPInput
+            noInputs={noInputs as number}
+            onChange={handleOTP}
+            isNumeric
+          />
         </Flex>
       </Flex>
     </ChakraProvider>
