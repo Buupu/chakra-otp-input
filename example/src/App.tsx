@@ -9,11 +9,15 @@ import {
   Input,
   FormControl,
   FormLabel,
+  useBoolean,
+  Switch,
 } from "@chakra-ui/react";
-import React, { useState } from "react";
+import React from "react";
 import { OTPInput } from "../../";
 
 export const App = () => {
+  const [isDisabled, setIsDisabled] = useBoolean();
+  const [isNumeric, setIsNumeric] = useBoolean();
   const {
     getInputProps,
     getIncrementButtonProps,
@@ -49,12 +53,29 @@ export const App = () => {
               </Button>
             </HStack>
           </FormControl>
+          <FormControl>
+            <FormLabel>Numeric?</FormLabel>
+            <Switch
+              size="lg"
+              checked={isNumeric}
+              onChange={setIsNumeric.toggle}
+            />
+          </FormControl>
+          <FormControl>
+            <FormLabel>Disabled?</FormLabel>
+            <Switch
+              size="lg"
+              checked={isDisabled}
+              onChange={setIsDisabled.toggle}
+            />
+          </FormControl>
         </VStack>
         <Flex flex={1} justify="center" align="center" background="blue.900">
           <OTPInput
             noInputs={noInputs as number}
             onChange={handleOTP}
-            isNumeric
+            isNumeric={isNumeric}
+            isDisabled={isDisabled}
           />
         </Flex>
       </Flex>
