@@ -4,6 +4,8 @@ One Time Password Component Package for Chakra UI
 
 ## Codesandbox Link [Here](https://githubbox.com/Buupu/chakra-otp-input/tree/main/demo)
 
+## NPM Link [Here](https://www.npmjs.com/package/chakra-otp-input)
+
 ## Install
 
 ```bash
