@@ -1,4 +1,4 @@
-import { HStack, Input } from "@chakra-ui/react";
+import { HStack, Input, InputElementProps } from "@chakra-ui/react";
 import React, { useEffect, useRef, useState, KeyboardEvent } from "react";
 
 export const OTPInput = ({ noInputs, onChange, isDisabled }: OTPProps) => {
@@ -78,14 +78,7 @@ export const OTPInput = ({ noInputs, onChange, isDisabled }: OTPProps) => {
       inputs.push(
         <Input
           key={`otp-input-${i}`}
-          w={12}
-          h={12}
-          p={0}
-          textAlign="center"
-          boxShadow="md"
-          bg="white"
-          fontWeight="bold"
-          fontSize="lg"
+          {...baseStyles}
           onInput={moveToNextInput}
           onKeyDown={handleKeyDown}
           value={input[i] || ""}
@@ -104,6 +97,17 @@ export const OTPInput = ({ noInputs, onChange, isDisabled }: OTPProps) => {
     return inputs;
   };
   return <HStack>{getInputs()}</HStack>;
+};
+
+const baseStyles: InputElementProps = {
+  w: "12",
+  h: "12",
+  p: "0",
+  textAlign: "center",
+  boxShadow: "md",
+  bg: "white",
+  fontWeight: "bold",
+  fontSize: "lg",
 };
 
 interface OTPProps {
