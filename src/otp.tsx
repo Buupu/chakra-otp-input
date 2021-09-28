@@ -1,7 +1,7 @@
 import { HStack, Input } from "@chakra-ui/react";
 import React, { useEffect, useRef, useState, KeyboardEvent } from "react";
 
-export const OTPInput = ({ noInputs, onChange }: OTPProps) => {
+export const OTPInput = ({ noInputs, onChange, isDisabled }: OTPProps) => {
   const [input, setInput] = useState<string[]>([]);
   const [activeInput, setActiveInput] = useState<number>(0);
   const inputRefs = useRef<HTMLInputElement[]>([]);
@@ -89,6 +89,7 @@ export const OTPInput = ({ noInputs, onChange }: OTPProps) => {
           onInput={moveToNextInput}
           onKeyDown={handleKeyDown}
           value={input[i] || ""}
+          isDisabled={isDisabled}
           onChange={(e) => {
             setCurrentFocusValue(e);
           }}
@@ -96,7 +97,7 @@ export const OTPInput = ({ noInputs, onChange }: OTPProps) => {
             setActiveInputOnFocus(i);
           }}
           ref={(ref: HTMLInputElement) => (inputRefs.current[i] = ref)}
-        />
+        />,
       );
     }
 
@@ -108,4 +109,5 @@ export const OTPInput = ({ noInputs, onChange }: OTPProps) => {
 interface OTPProps {
   noInputs: number;
   onChange: (value: string) => void;
+  isDisabled?: boolean;
 }
