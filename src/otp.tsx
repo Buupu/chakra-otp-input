@@ -8,7 +8,7 @@ import React, {
 } from "react";
 
 export const OTPInput = (props: OTPProps) => {
-  const { noInputs, onChange, isDisabled, isNumeric } = props;
+  const { noInputs, onChange, isDisabled, isNumeric, ...rest } = props;
   const [input, setInput] = useState<string[]>([]);
   const [activeInput, setActiveInput] = useState<number>(0);
   const inputRefs = useRef<HTMLInputElement[]>([]);
@@ -129,6 +129,7 @@ export const OTPInput = (props: OTPProps) => {
         <Input
           key={`otp-input-${i}`}
           {...baseStyles}
+          {...rest}
           onKeyDown={handleKeyDown}
           value={input[i] || ""}
           isDisabled={isDisabled}
@@ -158,9 +159,9 @@ const baseStyles: InputElementProps = {
   fontSize: "lg",
 };
 
-interface OTPProps {
+interface OTPProps extends Omit<InputElementProps, "onChange"> {
   noInputs: number;
-  onChange: (value: string) => void;
   isDisabled?: boolean;
   isNumeric?: boolean;
+  onChange: (value: string) => void;
 }
