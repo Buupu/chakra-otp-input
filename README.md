@@ -77,6 +77,13 @@ export default function App() {
     <td>false</td>
     <td>If true, input values will be masked.</td>
   </tr>
+  <tr>
+    <td>spacing</td>
+    <td>string | number</td>
+    <td>false</td>
+    <td>8px</td>
+    <td>Spacing between input element. Can be passed as px or spacing key.</td>
+  </tr>
 </table>
 
 ## Running project
