@@ -14,6 +14,7 @@ export const OTPInput = (props: OTPProps) => {
     isDisabled,
     isNumeric,
     isPrivate,
+    spacing,
     ...rest
   } = props;
   const [input, setInput] = useState<string[]>([]);
@@ -153,7 +154,7 @@ export const OTPInput = (props: OTPProps) => {
 
     return inputs;
   };
-  return <HStack>{getInputs()}</HStack>;
+  return <HStack spacing={spacing || 2}>{getInputs()}</HStack>;
 };
 
 const baseStyles: InputElementProps = {
@@ -172,5 +173,6 @@ interface OTPProps extends Omit<InputElementProps, "onChange"> {
   isDisabled?: boolean;
   isNumeric?: boolean;
   isPrivate?: boolean;
+  spacing?: string | number;
   onChange: (value: string) => void;
 }

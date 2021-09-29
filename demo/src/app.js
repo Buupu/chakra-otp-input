@@ -14,13 +14,13 @@ import React from "react";
 import { OTPInput } from "chakra-otp-input";
 
 export const App = () => {
-  const [isPrivate, setIsPrivate] = useBoolean();
   const [isDisabled, setIsDisabled] = useBoolean();
   const [isNumeric, setIsNumeric] = useBoolean();
+  const [isPrivate, setIsPrivate] = useBoolean();
   const {
-    getInputProps,
-    getIncrementButtonProps,
-    getDecrementButtonProps,
+    getInputProps: getNoInputsProps,
+    getIncrementButtonProps: getNoInputsIncProps,
+    getDecrementButtonProps: getNoInputsDecProps,
     value: noInputs,
   } = useNumberInput({
     defaultValue: 6,
@@ -28,9 +28,24 @@ export const App = () => {
     max: 12,
   });
 
-  const inc = getIncrementButtonProps();
-  const dec = getDecrementButtonProps();
-  const input = getInputProps();
+  const incNoInputs = getNoInputsIncProps();
+  const decNoInputs = getNoInputsDecProps();
+  const noInputsProps = getNoInputsProps();
+
+  const {
+    getInputProps: getSpacingProps,
+    getIncrementButtonProps: getSpacingIncProps,
+    getDecrementButtonProps: getSpacingDecProps,
+    value: spacing,
+  } = useNumberInput({
+    defaultValue: 8,
+    min: 0,
+    max: 100,
+  });
+
+  const incSpacing = getSpacingIncProps();
+  const decSpacing = getSpacingDecProps();
+  const spacingProps = getSpacingProps();
 
   const handleOTP = (value) => {
     console.log(value);
@@ -42,11 +57,23 @@ export const App = () => {
         <FormControl>
           <FormLabel>Number of inputs</FormLabel>
           <HStack maxW="320px">
-            <Button {...dec} colorScheme="teal">
+            <Button {...decNoInputs} colorScheme="teal">
               -
             </Button>
-            <Input {...input} />
-            <Button {...inc} colorScheme="teal">
+            <Input {...noInputsProps} />
+            <Button {...incNoInputs} colorScheme="teal">
+              +
+            </Button>
+          </HStack>
+        </FormControl>
+        <FormControl>
+          <FormLabel>Spacing</FormLabel>
+          <HStack maxW="320px">
+            <Button {...decSpacing} colorScheme="teal">
+              -
+            </Button>
+            <Input {...spacingProps} />
+            <Button {...incSpacing} colorScheme="teal">
               +
             </Button>
           </HStack>
@@ -83,6 +110,7 @@ export const App = () => {
           isNumeric={isNumeric}
           isDisabled={isDisabled}
           isPrivate={isPrivate}
+          spacing={`${spacing}px`}
         />
       </Flex>
     </Flex>
