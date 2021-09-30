@@ -14,6 +14,7 @@ export const OTPInput = (props: OTPProps) => {
     isDisabled,
     isNumeric,
     isPrivate,
+    isPasteDisabled,
     spacing,
     ...rest
   } = props;
@@ -100,16 +101,12 @@ export const OTPInput = (props: OTPProps) => {
   const handleOnPaste = (e: ClipboardEvent<HTMLInputElement>) => {
     e.preventDefault();
 
-    if (isDisabled) {
-      return;
-    }
-
     const pastedData = e.clipboardData
       .getData("text/plain")
       .slice(0, noInputs - activeInput)
       .split("");
 
-    if (pastedData.length === 0) {
+    if (isDisabled || isPasteDisabled || pastedData.length === 0) {
       return;
     }
 
@@ -173,6 +170,7 @@ interface OTPProps extends Omit<InputElementProps, "onChange"> {
   isDisabled?: boolean;
   isNumeric?: boolean;
   isPrivate?: boolean;
+  isPasteDisabled?: boolean;
   spacing?: string | number;
   onChange: (value: string) => void;
 }
