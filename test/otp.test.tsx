@@ -30,3 +30,23 @@ test("Checks inputs are not disabled", () => {
     expect(input).toHaveProperty("disabled", false),
   );
 });
+
+test("Checks inputs aren't set to password type", () => {
+  render(<OTPInput onChange={() => {}} noInputs={3} isPrivate={false} />);
+
+  const otpInputFields = screen.getAllByTestId("chakra-otp-input-field");
+
+  otpInputFields.forEach((input) =>
+    expect(input).toHaveProperty("type", "text"),
+  );
+});
+
+test("Checks inputs are set to password type", () => {
+  render(<OTPInput onChange={() => {}} noInputs={3} isPrivate={true} />);
+
+  const otpInputFields = screen.getAllByTestId("chakra-otp-input-field");
+
+  otpInputFields.forEach((input) =>
+    expect(input).toHaveProperty("type", "password"),
+  );
+});
