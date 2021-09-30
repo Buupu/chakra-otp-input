@@ -78,6 +78,13 @@ export default function App() {
     <td>If true, input values will be masked.</td>
   </tr>
   <tr>
+    <td>isPasteDisabled</td>
+    <td>boolean</td>
+    <td>false</td>
+    <td>false</td>
+    <td>If true, disables pasting into inputs.</td>
+  </tr>
+  <tr>
     <td>spacing</td>
     <td>string | number</td>
     <td>false</td>
