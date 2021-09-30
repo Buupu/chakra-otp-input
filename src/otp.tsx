@@ -145,6 +145,7 @@ export const OTPInput = (props: OTPProps) => {
           onPaste={handleOnPaste}
           type={isPrivate ? "password" : ""}
           ref={(ref: HTMLInputElement) => (inputRefs.current[i] = ref)}
+          data-testid="chakra-otp-input-field"
         />,
       );
     }
