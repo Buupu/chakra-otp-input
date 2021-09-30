@@ -89,7 +89,7 @@ export default function App() {
     <td>string | number</td>
     <td>false</td>
     <td>8px</td>
-    <td>Spacing between input element. Can be passed as px or spacing key.</td>
+    <td>Spacing between input elements. Can be passed as px or spacing key.</td>
   </tr>
 </table>
 
