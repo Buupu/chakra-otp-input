@@ -18,6 +18,8 @@ export const App = () => {
   const [isNumeric, setIsNumeric] = useBoolean();
   const [isPrivate, setIsPrivate] = useBoolean();
   const [isPasteDisabled, setIsPasteDisabled] = useBoolean();
+  const [isError, setIsError] = useBoolean();
+
   const {
     getInputProps: getNoInputsProps,
     getIncrementButtonProps: getNoInputsIncProps,
@@ -111,12 +113,17 @@ export const App = () => {
             onChange={setIsPasteDisabled.toggle}
           />
         </FormControl>
+        <FormControl>
+          <FormLabel>Error?</FormLabel>
+          <Switch size="lg" checked={isError} onChange={setIsError.toggle} />
+        </FormControl>
       </VStack>
       <Flex flex={1} justify="center" align="center" background="blue.900">
         <OTPInput
           noInputs={noInputs}
           onChange={handleOTP}
           isNumeric={isNumeric}
+          isError={isError}
           isDisabled={isDisabled}
           isPrivate={isPrivate}
           isPasteDisabled={isPasteDisabled}
