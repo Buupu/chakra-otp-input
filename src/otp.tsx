@@ -14,6 +14,7 @@ export const OTPInput = (props: OTPProps) => {
     isDisabled,
     isNumeric,
     isPrivate,
+    isError,
     isPasteDisabled,
     spacing,
     ...rest
@@ -138,6 +139,7 @@ export const OTPInput = (props: OTPProps) => {
           onKeyDown={handleKeyDown}
           value={input[i] || ""}
           isDisabled={isDisabled}
+          isInvalid={isError}
           onChange={setCurrentFocusValue}
           onFocus={() => {
             setActiveInputOnFocus(i);
@@ -168,6 +170,7 @@ const baseStyles: InputElementProps = {
 
 interface OTPProps extends Omit<InputElementProps, "onChange"> {
   noInputs: number;
+  isError?: boolean;
   isDisabled?: boolean;
   isNumeric?: boolean;
   isPrivate?: boolean;
