@@ -64,6 +64,13 @@ export default function App() {
     <td>If true, sets the OTP inputs to be disabled.</td>
   </tr>
    <tr>
+    <td>isError</td>
+    <td>boolean</td>
+    <td>false</td>
+    <td>false</td>
+    <td>If true, will display error styles to inputs.</td>
+  </tr>
+   <tr>
     <td>isNumeric</td>
     <td>boolean</td>
     <td>false</td>
