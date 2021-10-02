@@ -19,6 +19,7 @@ export const App = () => {
   const [isPrivate, setIsPrivate] = useBoolean();
   const [isPasteDisabled, setIsPasteDisabled] = useBoolean();
   const [isError, setIsError] = useBoolean();
+  const [placeholder, setPlaceholder] = useState("🏀");
 
   const {
     getInputProps: getNoInputsProps,
@@ -68,6 +69,14 @@ export const App = () => {
               +
             </Button>
           </HStack>
+        </FormControl>
+        <FormControl>
+          <FormLabel>Placeholder</FormLabel>
+          <Input
+            value={placeholder}
+            onChange={(e) => setPlaceholder(e.target.value)}
+          />
+          <FormHelperText>Recommended to be 1 character.</FormHelperText>
         </FormControl>
         <FormControl>
           <FormLabel>Spacing</FormLabel>
@@ -128,6 +137,7 @@ export const App = () => {
           isPrivate={isPrivate}
           isPasteDisabled={isPasteDisabled}
           spacing={`${spacing}px`}
+          placeholder={placeholder}
         />
       </Flex>
     </Flex>
