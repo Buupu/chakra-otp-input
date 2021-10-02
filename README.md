@@ -98,6 +98,13 @@ export default function App() {
     <td>8px</td>
     <td>Spacing between input elements. Can be passed as px or spacing key.</td>
   </tr>
+   <tr>
+    <td>placeholder</td>
+    <td>string</td>
+    <td>false</td>
+    <td>-</td>
+    <td>Placeholder for input elements. Recommended to be max 1 character.</td>
+  </tr>
 </table>
 
 ## Running project

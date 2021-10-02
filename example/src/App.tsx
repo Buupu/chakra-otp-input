@@ -11,8 +11,9 @@ import {
   FormLabel,
   useBoolean,
   Switch,
+  FormHelperText,
 } from "@chakra-ui/react";
-import React from "react";
+import React, { useState } from "react";
 import { OTPInput } from "../../";
 
 export const App = () => {
@@ -21,6 +22,7 @@ export const App = () => {
   const [isPrivate, setIsPrivate] = useBoolean();
   const [isPasteDisabled, setIsPasteDisabled] = useBoolean();
   const [isError, setIsError] = useBoolean();
+  const [placeholder, setPlaceholder] = useState<string>("🏀");
 
   const {
     getInputProps: getNoInputsProps,
@@ -62,7 +64,7 @@ export const App = () => {
         <VStack w="300px" p={3} borderRight="2px">
           <FormControl>
             <FormLabel>Number of inputs</FormLabel>
-            <HStack maxW="320px">
+            <HStack>
               <Button {...decNoInputs} colorScheme="teal">
                 -
               </Button>
@@ -73,8 +75,16 @@ export const App = () => {
             </HStack>
           </FormControl>
           <FormControl>
+            <FormLabel>Placeholder</FormLabel>
+            <Input
+              value={placeholder}
+              onChange={(e) => setPlaceholder(e.target.value)}
+            />
+            <FormHelperText>Recommended to be 1 character.</FormHelperText>
+          </FormControl>
+          <FormControl>
             <FormLabel>Spacing</FormLabel>
-            <HStack maxW="320px">
+            <HStack>
               <Button {...decSpacing} colorScheme="teal">
                 -
               </Button>
@@ -131,6 +141,7 @@ export const App = () => {
             isPrivate={isPrivate}
             isPasteDisabled={isPasteDisabled}
             spacing={`${spacing}px`}
+            placeholder={placeholder}
           />
         </Flex>
       </Flex>
