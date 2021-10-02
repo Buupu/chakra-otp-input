@@ -12,6 +12,22 @@ test("Renders correct number of input fields", () => {
   expect(otpInputFields).toHaveLength(3);
 });
 
+test("Returns correct input", () => {
+  let input;
+
+  render(<OTPInput onChange={(value) => (input = value)} noInputs={3} />);
+
+  const otpInputFields: HTMLInputElement[] = screen.getAllByTestId(
+    "chakra-otp-input-field",
+  );
+
+  userEvent.type(otpInputFields[0], "c");
+  userEvent.type(otpInputFields[1], "a");
+  userEvent.type(otpInputFields[2], "r");
+
+  expect(input).toEqual("car");
+});
+
 test("Checks inputs are disabled", () => {
   render(<OTPInput onChange={() => {}} noInputs={3} isDisabled={true} />);
 
