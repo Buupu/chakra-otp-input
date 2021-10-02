@@ -16,6 +16,7 @@ export const OTPInput = (props: OTPProps) => {
     isPrivate,
     isError,
     isPasteDisabled,
+    placeholder,
     spacing,
     ...rest
   } = props;
@@ -144,6 +145,7 @@ export const OTPInput = (props: OTPProps) => {
           onFocus={() => {
             setActiveInputOnFocus(i);
           }}
+          placeholder={placeholder}
           onPaste={handleOnPaste}
           type={isPrivate ? "password" : ""}
           ref={(ref: HTMLInputElement) => (inputRefs.current[i] = ref)}
@@ -175,6 +177,7 @@ interface OTPProps extends Omit<InputElementProps, "onChange"> {
   isNumeric?: boolean;
   isPrivate?: boolean;
   isPasteDisabled?: boolean;
+  placeholder?: string;
   spacing?: string | number;
   onChange: (value: string) => void;
 }
