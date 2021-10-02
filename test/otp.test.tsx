@@ -100,14 +100,12 @@ test("Checks isNumeric prop blocks user entering non number characters", () => {
   expect(otpInputFields[0].value).toEqual("");
 });
 
-test("Checks isNumeric prop still allows user to enter numbers", () => {
-  render(<OTPInput onChange={() => {}} noInputs={3} isNumeric={true} />);
+test("Check placeholder is applied to inputs", () => {
+  render(<OTPInput onChange={() => {}} noInputs={3} placeholder="test" />);
 
-  const otpInputFields: HTMLInputElement[] = screen.getAllByTestId(
-    "chakra-otp-input-field",
+  const otpInputFields: HTMLInputElement[] = screen.getAllByPlaceholderText(
+    "test",
   );
 
-  userEvent.type(otpInputFields[0], "1");
-
-  expect(otpInputFields[0].value).toEqual("1");
+  expect(otpInputFields).toHaveLength(3);
 });
