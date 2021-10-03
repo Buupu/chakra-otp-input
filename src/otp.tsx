@@ -135,6 +135,7 @@ export const OTPInput = (props: OTPProps) => {
       inputs.push(
         <Input
           key={`otp-input-${i}`}
+          aria-label={`one time password input number ${i + 1}`}
           {...baseStyles}
           {...rest}
           onKeyDown={handleKeyDown}
