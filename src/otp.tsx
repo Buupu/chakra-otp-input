@@ -138,6 +138,8 @@ export const OTPInput = (props: OTPProps) => {
           key={`otp-input-${i}`}
           aria-label={`${ariaLabelOverride ||
             "one time password input number"} ${i + 1}`}
+          inputmode={isNumeric ? "numeric" : "text"}
+          pattern={isNumeric ? "[0-9]*" : ""}
           {...baseStyles}
           {...rest}
           onKeyDown={handleKeyDown}
