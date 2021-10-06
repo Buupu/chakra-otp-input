@@ -17,17 +17,23 @@ npm i chakra-otp-input
 ### Basic Usage
 
 ```js
-import { Flex, FormControl, FormHelperText, FormLabel } from "@chakra-ui/react";
+import { Flex, FormControl, ChakraProvider, theme } from "@chakra-ui/react";
 import * as React from "react";
 import { OTPInput } from "chakra-otp-input";
 
 export default function App() {
+  const handleOTPInput = (value) => {
+    console.log(value);
+  };
+
   return (
-    <Flex pt="48" justify="center" align="center" w="full">
-      <FormControl w="60">
-        <OTPInput noInputs={6} onChange={(value) => console.log(value)} />
-      </FormControl>
-    </Flex>
+    <ChakraProvider theme={theme}>
+      <Flex pt="48" justify="center" align="center" w="full">
+        <FormControl w="60">
+          <OTPInput noInputs={6} onChange={handleOTPInput} />
+        </FormControl>
+      </Flex>
+    </ChakraProvider>
   );
 }
 ```
