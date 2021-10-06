@@ -9,6 +9,7 @@ import React, {
 
 export const OTPInput = (props: OTPProps) => {
   const {
+    ariaLabelOverride,
     noInputs,
     onChange,
     isDisabled,
@@ -135,7 +136,8 @@ export const OTPInput = (props: OTPProps) => {
       inputs.push(
         <Input
           key={`otp-input-${i}`}
-          aria-label={`one time password input number ${i + 1}`}
+          aria-label={`${ariaLabelOverride ||
+            "one time password input number"} ${i + 1}`}
           {...baseStyles}
           {...rest}
           onKeyDown={handleKeyDown}
@@ -179,6 +181,7 @@ interface OTPProps extends Omit<InputElementProps, "onChange"> {
   isPrivate?: boolean;
   isPasteDisabled?: boolean;
   placeholder?: string;
+  ariaLabelOverride?: string;
   spacing?: string | number;
   onChange: (value: string) => void;
 }
