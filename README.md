@@ -105,6 +105,13 @@ export default function App() {
     <td>-</td>
     <td>Placeholder for input elements. Recommended to be max 1 character.</td>
   </tr>
+  <tr>
+    <td>ariaLabelOverride</td>
+    <td>string</td>
+    <td>false</td>
+    <td>"one time password input"</td>
+    <td>Override for default aria label.</td>
+  </tr>
 </table>
 
 ## Running project
